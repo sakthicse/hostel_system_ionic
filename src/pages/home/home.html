@@ -1,0 +1,27 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Tenders
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button [menuToggle]="activeMenu">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      New Tenders
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!-- <p *ngIf="railway_tender_count" ><button [navPush]="railway_page" [navParams]="params">New railway tenders :<h6>{{ railway_tender_count }}</h6></button> </p> -->
+  <p *ngIf="railway_tender_count" (click)='detailPage("railway")'>New railway tenders: <b style="font-size: 22px;">{{ railway_tender_count }}</b></p>
+  <p *ngIf="bhel_tender_count" (click)='detailPage("bhel")'>New bhel tenders: <b style="font-size: 22px;">{{ bhel_tender_count }}</b></p>
+  <!-- <p *ngIf="bhel_tender_count" > <button [navPush]="bhel_page" [navParams]="params"><h6>New bhel tenders :{{ bhel_tender_count }}</h6></button></p> -->
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-content class="login-content" padding>
+    <ion-grid>
+        <ion-row justify-content-center align-items-center>
+              <ion-col>
+        <img src="../../assets/imgs/anabond-logo.png" style="max-width: none;">
+  <div class="login-box">
+    <form (ngSubmit)="login()" #registerForm="ngForm">
+          <ion-list inset>
+              <!-- <img src='../../assets/imgs/man-user-con.png'> -->
+            <ion-item  class="input-field">
+             
+                <ion-icon name="ios-person" item-left md="md-person"></ion-icon>
+              <ion-input class='input-field-foc'  type="text" placeholder="User name" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>
+            </ion-item>
+            
+            <ion-item class="input-field">
+                <!-- <ion-icon ios="ios-key" md="md-key"></ion-icon> -->
+
+                <ion-icon name="ios-key" md="md-key" item-left ></ion-icon> <ion-input class='input-field-foc'  type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+
+            </ion-item>
+            <button ion-button full type="submit" class="signup-col" [disabled]="!registerForm.form.valid">Login</button>
+          </ion-list>
+
+
+
+
+          <!-- <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button> -->
+          
+
+      </form>
+      
+
+
+<!-- 
+      <ion-row class="bottom-row">
+    <ion-col class="login-button">
+      <button ion-button block color="danger" (click)="doGoogleLogin()">Google Login</button>
+    </ion-col>
+  </ion-row> -->
+
+  
+  </div>
+</ion-col>
+</ion-row>
+    </ion-grid>
+</ion-content>

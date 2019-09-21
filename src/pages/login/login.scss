@@ -1,0 +1,85 @@
+page-login {
+  .grid, .row {
+    // Force grid to fill height of content as this is not set by default
+    height: 100%;
+  }
+    .login-content {
+      background: #25A65B;
+      display:flex;
+      padding-top: 50%;
+      position: absolute;
+      
+   
+    }
+      .logo-row {
+        padding-top: 50px;
+        padding-bottom: 20px;
+      }
+   
+      .login-box {
+        background: #fff;
+        padding: 5px 5px 5px 5px;
+        margin-top: 30px;
+        border-radius: 7px;
+        
+      }
+      ion-col img{
+          //  align-items: center;
+         text-align: center;
+         margin-left: 4vh;
+      }
+      // ion-row {
+      //    align-items: center;
+      //    text-align: center;
+      //  }
+   
+       ion-item {
+           border-radius: 30px !important;
+           padding-left: 30px !important;
+           font-size: 0.9em;
+           margin-bottom: 10px;
+           border: 1px solid #ffffff;
+           border-bottom: 0px !important;
+           box-shadow: none !important;
+       }
+   
+       .signup-col {
+         margin-top: 25px;
+        
+       }
+   
+       .item-inner {
+         border-bottom-color: #ffffff !important;
+         box-shadow: none !important;
+       }
+   
+       .submit-btn {
+         background: #51CFB1;
+         border-radius: 30px !important;
+         border: 1px solid #ffffff;
+       }
+   
+       .register-btn {
+         color: #ffffff;
+         font-size: 0.8em;
+       }
+       .input-field{
+         border-bottom: 1px solid #95a5a6 !important;
+         border-radius: 0px !important;
+         padding-left: 0px !important;
+       }
+      //  .username{
+      //    background-image: '../../assets/imgs/man-user-con.png';
+      //    background-repeat: no-repeat;
+      //  }
+       .item-inner{
+         margin-left: 0px !important;
+       }
+       ion-icon{
+         color: #d3cece !important;
+       }
+       .input-field-foc{
+         outline:none !important;
+       }
+   
+  }
