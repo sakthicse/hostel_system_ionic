@@ -16,7 +16,7 @@ export class CustomHttpServiceProvider {
   login_via:string;
   // api_url="http://localhost:8000"
   // api_url="http://192.168.43.42:8000"
-  api_url="http://192.168.1.2:8000"
+  api_url="http://192.168.1.4:8000"
   headers:any={};
   loading: Loading;
   constructor(public http: HttpClient, private loadingCtrl: LoadingController,public app: App) {

@@ -21,24 +21,32 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <button ion-item *ngFor="let std of student_list">
-      
-      {{std.student_name}}
+    <ion-searchbar
+    [(ngModel)]="search"
+    [showCancelButton]="shouldShowCancel"
+    (change)="onInput($event)"
+    (ionClear)="onClear($event)"
+    (ionCancel)="onCancelEve($event)">
+  </ion-searchbar>
+  
 
-      <input type="checkbox">
-     
-    </button>
-  </ion-list>
-
+    <span ion-datepicker style="margin-left:35%;" [min]="localDate" [(value)]="initDate" locale="en-US" clear class="ScheduleDate" >
+		<span>{{initDate | date}}<ion-icon name="clipboard" item-left ></ion-icon> </span>
+	</span>
   <ion-list *ngIf="student_list">
+    	<ion-item >
+          <h2><b>Student Name</b></h2>
+          <h2 style="float: right;margin-top: -17px;"><b>Is prensent?</b></h2>
+          <br>
+          <h2 style="float: right;margin-top: -14px;"><b>Select all</b> </h2>
+          <input type="checkbox" style="float: right;margin-top: -15px;" (change)="sellectAll($event)" [(ngModel)]="select_all">
+        </ion-item>
 			<ion-item *ngFor="let std of student_list">
 				
-				<h2>Tender Id: {{std.student_name}}</h2>
-				<ion-icon class="go-to-detail-page" name="ios-arrow-forward" ></ion-icon>
-        <h4 class="tender-title">Name: {{std.tender_title}}</h4>
-        <input type="checkbox">
+				<h2 style="font-weight:600">{{std.student_name}}</h2>
+        <input type="checkbox" style="float: right;margin-top: -17px;font-weight:600" [(ngModel)]="update_attendance[std.id]">
 			</ion-item>
 			<p *ngIf="student_list?.length == 0">No student found</p>
-		</ion-list>
+    </ion-list>
+    <p (click)="saveAttendance()">Save</p>
 </ion-content>

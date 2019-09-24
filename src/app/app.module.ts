@@ -16,7 +16,7 @@ import { CustomHttpServiceProvider } from '../providers/custom-http-service/cust
 import { HttpClientModule } from '@angular/common/http';
 import { AttendancePage } from '../pages/attendance/attendance';
 import { CommonServiceProvider } from '../providers/common-service/common-service';
-
+import { DatePickerModule } from 'ion-datepicker';
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +31,7 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    DatePickerModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

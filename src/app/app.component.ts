@@ -52,4 +52,16 @@ export class MyApp {
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+
+  logOut(){
+    // this.pages = [];
+    var login_via = localStorage.getItem('login_via');
+  
+      localStorage.removeItem('header_token');
+      localStorage.removeItem('login_via');
+    
+        this.nav.setRoot(LoginPage);
+
+    
+  }
 }
