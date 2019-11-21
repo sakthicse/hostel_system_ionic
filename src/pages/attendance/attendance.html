@@ -30,9 +30,9 @@
   </ion-searchbar>
   
 
-    <span ion-datepicker style="margin-left:35%;" [min]="localDate" [(value)]="initDate" locale="en-US" clear class="ScheduleDate" >
+    <!-- <span ion-datepicker style="margin-left:35%;" [min]="localDate" [(value)]="initDate" locale="en-US" clear class="ScheduleDate" >
 		<span>{{initDate | date}}<ion-icon name="clipboard" item-left ></ion-icon> </span>
-	</span>
+	</span> -->
   <ion-list *ngIf="student_list">
     	<ion-item >
           <h2><b>Student Name</b></h2>
@@ -43,10 +43,13 @@
         </ion-item>
 			<ion-item *ngFor="let std of student_list">
 				
-				<h2 style="font-weight:600">{{std.student_name}}</h2>
+				<h2 style="font-weight:600">{{std.student_name}}({{ std.branch }})</h2>
         <input type="checkbox" style="float: right;margin-top: -17px;font-weight:600" [(ngModel)]="update_attendance[std.id]">
 			</ion-item>
-			<p *ngIf="student_list?.length == 0">No student found</p>
+			<p *ngIf="student_list?.length == 0" style="text-align: center">No student found</p>
     </ion-list>
-    <p (click)="saveAttendance()">Save</p>
+    <!-- <p (click)="saveAttendance()"  *ngIf="student_list?.length > 0"  style="text-align: center">Save</p> -->
+    <button ion-button full (click)="saveAttendance()"  *ngIf="student_list?.length > 0" class="signup-col">Save</button>
+   
+
 </ion-content>

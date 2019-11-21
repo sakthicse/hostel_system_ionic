@@ -30,8 +30,10 @@ page:number=0;
 search:string='';
 update_attendance:any={};
 select_all:boolean=false;
+current_year:string='';
   constructor(public navCtrl: NavController, public navParams: NavParams,public cs:CommonServiceProvider,public datepipe: DatePipe) {
-    this.getStudent()
+    this.getCurrentYear();
+   
   }
 
   ionViewDidLoad() {
@@ -44,21 +46,20 @@ select_all:boolean=false;
     console.log(this.url)
       this.student_list = [];
       this.page =1;
-      console.log("*************")
-      console.log(this.datepipe.transform(this.initDate, 'yyyy-MM-dd'))
-    this.cs.get('/attendance-api/hostel-student/?page='+this.page+"&search="+this.search+"&purpose=form&date=").map(res => res)
+    this.cs.get('/attendance-api/hostel-student/?page='+this.page+"&search="+this.search+"&purpose=form&current_year="+this.current_year).map(res => res)
     .subscribe(data => {
       
       // this.maximumPages = data['total_pages'];
       
       this.student_list= data['results'];
-      console.log(this.student_list)
       if(this.student_list.length > 0){
         this.student_list.forEach(element => {
           this.update_attendance[element.id]=0;
         });
         this.cs.hideLoading();
         this.getAttendance()
+      }else{
+        this.cs.hideLoading();
       }
       
      
@@ -78,7 +79,7 @@ select_all:boolean=false;
     this.cs.showLoading();
     
       this.page =1;
-    this.cs.get('/attendance-api/attendance/?page='+this.page+"&search="+this.search+"&purpose=for").map(res => res)
+    this.cs.get('/attendance-api/attendance/?page='+this.page+"&search="+this.search+"&purpose=form").map(res => res)
     .subscribe(data => {
       if( data['results'].length > 0){
         data['results'].forEach(element => {
@@ -135,4 +136,30 @@ onCancelEve(){
         this.cs.checkError(err);
       })
     }
+
+
+    getCurrentYear(){
+      this.cs.showLoading();
+      
+        this.page =1;
+      this.cs.get('/attendance-api/year/?page='+this.page+"&get_current_year=1").map(res => res)
+      .subscribe(data => {
+        if(data['results'].length > 0){
+          this.current_year = data['results'][0].id
+        }else{
+          this.current_year = ''
+        }
+        this.cs.hideLoading();
+        this.getStudent()
+        
+        
+        
+       
+       
+      },(err) => {
+        console.log(JSON.stringify(err));
+        this.cs.hideLoading();
+        this.cs.checkError(err);
+      })
+    } 
 }
